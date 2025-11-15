@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
   jq \
   vim
 
-# Make dev container user
+# Set up the dev container user
 ARG USERNAME
 # So we need the uid & gid to be the same as outside the container - this is
 # typically 1000:1000 on WSL (seems to work on Mac too).
