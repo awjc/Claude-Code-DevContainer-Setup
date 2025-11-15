@@ -35,10 +35,6 @@ RUN usermod -d /home/${USERNAME} -m ${USERNAME}
 RUN mkdir -p /usr/local/share/npm-global && \
   chown -R ${USERNAME}:${USERNAME} /usr/local/share
 
-# Allow passwordless sudo for the container user
-RUN echo "${USERNAME} ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-${USERNAME} && \
-    chmod 440 /etc/sudoers.d/90-${USERNAME}
-
 
 # Persist bash history.
 RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhistory/.bash_history" \
@@ -71,5 +67,3 @@ ENV VISUAL=vim
 
 # Install Claude
 RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
-
-
