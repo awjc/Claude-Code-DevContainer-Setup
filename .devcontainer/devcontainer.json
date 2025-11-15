@@ -28,7 +28,6 @@
   "mounts": [
     "source=claude-code-bashhistory-${devcontainerId},target=/commandhistory,type=volume",
     "source=claude-code-config-${devcontainerId},target=/home/devcon/.claude,type=volume",
-    "source=${localWorkspaceFolder}/.claude,target=/home/devcon/.claude,type=bind,consistency=cached"
   ],
   "containerEnv": {
     "NODE_OPTIONS": "--max-old-space-size=4096",
