@@ -3,8 +3,6 @@ FROM node:slim
 ARG TZ
 ENV TZ="$TZ"
 
-ARG CLAUDE_CODE_VERSION=latest
-
 # Install basic development tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
   less \
@@ -67,7 +65,7 @@ ENV EDITOR=vim
 ENV VISUAL=vim
 
 # Install Claude
-RUN npm install -g @anthropic-ai/claude-code@${CLAUDE_CODE_VERSION}
+RUN npm install -g @anthropic-ai/claude-code
 
 # Set up c-dsp alias to run claude and skip asking for permission (since we're in an isolated container)
 RUN echo 'alias c-dsp="claude --dangerously-skip-permissions"' >> ~/.bashrc
